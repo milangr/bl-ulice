@@ -1790,8 +1790,9 @@ html&gt;body{padding:0}&lt;/style&gt;
   &lt;h3&gt;Banja Luka · zatvaranja 25.10.2026.&lt;/h3&gt;
   &lt;div class=&quot;text-small&quot;&gt;&lt;a href=&quot;https://www.banjaluka.rs.ba/zbog-odrzavanja-manifestacije-banjal-2/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Grad Banja Luka – obavijest o zatvaranju&lt;/a&gt;&lt;/div&gt;
   &lt;div class=&quot;text-small text-muted&quot;&gt;Označene su glavne trase ulica, bez bočnih ogranaka i prilaza.&lt;/div&gt;
-  &lt;div class=&quot;viz-row bl-legend&quot; aria-label=&quot;Termini zatvaranja&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;viz-controls&quot;&gt;
+  &lt;div class=&quot;bl-workspace&quot;&gt;
+  &lt;div class=&quot;bl-map-column&quot;&gt;
+  &lt;div class=&quot;viz-controls bl-map-controls&quot;&gt;
     &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-view=&quot;all&quot;&gt;Cijela trasa&lt;/button&gt;
     &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-view=&quot;center&quot;&gt;Centar&lt;/button&gt;
     &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-view=&quot;south&quot;&gt;Prema Karanovcu&lt;/button&gt;
@@ -1799,19 +1800,34 @@ html&gt;body{padding:0}&lt;/style&gt;
     &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-zoom=&quot;out&quot; aria-label=&quot;Umanji mapu&quot;&gt;−&lt;/button&gt;
   &lt;/div&gt;
   &lt;svg class=&quot;bl-map&quot; role=&quot;img&quot; aria-label=&quot;OpenStreetMap karta dvadeset zatvorenih dionica prema pet termina i dodatnog isprekidanog spoja Kralja Petra I od Aleje Svetog Save do Olimpijskih pobjednika, za koji termin zatvaranja nije potvrđen.&quot;&gt;&lt;title&gt;Zatvorene ulice u Banjoj Luci&lt;/title&gt;&lt;desc&gt;Karta se može pomjerati i uvećavati. Prelazak mišem preko bilo koje prikazane ulice pokazuje njen naziv. Izbor zatvorene dionice ispod karte prikazuje njen termin.&lt;/desc&gt;&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;aside class=&quot;bl-sidebar&quot; aria-label=&quot;Ulice i termini zatvaranja&quot;&gt;
+  &lt;div class=&quot;viz-row bl-legend&quot; aria-label=&quot;Termini zatvaranja&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bl-selection-info&quot;&gt;
   &lt;label class=&quot;form-label&quot;&gt;Ulica i termin &lt;select class=&quot;form-select bl-select&quot; aria-label=&quot;Izaberi zatvorenu dionicu&quot;&gt;&lt;/select&gt;&lt;/label&gt;
   &lt;div class=&quot;bl-detail&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;text-small&quot;&gt;Sitno isprekidani spoj Kralja Petra I: Aleja Svetog Save → Olimpijskih pobjednika · termin zatvaranja nije potvrđen.&lt;/div&gt;
   &lt;div class=&quot;text-small text-muted&quot;&gt;Ostale isprekidane dionice imaju približne granice · planirana obustava, bez potvrde uživo&lt;/div&gt;
   &lt;div class=&quot;text-small&quot;&gt;Geometrija © &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;OpenStreetMap contributors&lt;/a&gt; · &lt;a href=&quot;https://www.banjaluka.rs.ba/zbog-odrzavanja-manifestacije-banjal-2/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Obavijest Grada Banja Luka&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/aside&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 &lt;style&gt;
 #bl-zatvaranja {color:var(--foreground)}
+#bl-zatvaranja .bl-workspace {display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:&quot;legend&quot; &quot;controls&quot; &quot;map&quot; &quot;details&quot;;gap:12px;margin-top:12px}
+#bl-zatvaranja .bl-map-controls {grid-area:controls}
+#bl-zatvaranja .bl-map-column {display:contents}
+#bl-zatvaranja .bl-sidebar {display:contents}
+#bl-zatvaranja .bl-selection-info {grid-area:details;min-width:0;overflow-wrap:anywhere}
+#bl-zatvaranja .bl-selection-info .form-label {display:block}
+#bl-zatvaranja .bl-select {width:100%;min-width:0}
+#bl-zatvaranja .bl-legend {grid-area:legend}
 #bl-zatvaranja .bl-legend {gap:8px 18px;margin-bottom:12px}
 #bl-zatvaranja .bl-legend label {display:flex;align-items:center;gap:6px}
 #bl-zatvaranja .bl-swatch {width:24px;height:5px;display:inline-block;background:var(--c)}
 #bl-zatvaranja .bl-unconfirmed-swatch {background:none;height:0;border-top:4px dashed var(--foreground)}
-#bl-zatvaranja .bl-map {display:block;width:100%;height:560px;touch-action:none;cursor:grab;background:var(--muted);margin:10px 0}
+#bl-zatvaranja .bl-map {grid-area:map;display:block;width:100%;min-width:0;height:560px;touch-action:none;cursor:grab;background:var(--muted);margin:0}
 #bl-zatvaranja .bl-map:active {cursor:grabbing}
 #bl-zatvaranja .bl-detail {min-height:64px;margin:10px 0}
 #bl-zatvaranja .bl-road {fill:none;stroke:var(--foreground);opacity:.14;stroke-width:1px;vector-effect:non-scaling-stroke}
@@ -1828,6 +1844,12 @@ html&gt;body{padding:0}&lt;/style&gt;
 #bl-zatvaranja .bl-arrow {fill:var(--foreground);font-size:12px}
 #bl-zatvaranja .bl-selected {stroke-width:8px}
 @media(max-width:480px){#bl-zatvaranja .bl-map{height:520px}}
+@media(min-width:900px){
+ #bl-zatvaranja .bl-workspace {grid-template-columns:minmax(0,1fr) 280px;grid-template-areas:&quot;map-column sidebar&quot;;column-gap:20px;align-items:start}
+ #bl-zatvaranja .bl-map-column {display:flex;grid-area:map-column;flex-direction:column;gap:12px;min-width:0}
+ #bl-zatvaranja .bl-sidebar {display:block;grid-area:sidebar;min-width:0}
+ #bl-zatvaranja .bl-sidebar .bl-legend {margin-bottom:20px;gap:10px 14px}
+}
 &lt;/style&gt;
 &lt;script src=&quot;https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
